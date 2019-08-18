@@ -78,7 +78,6 @@ def get_stat(users):
 def get_user_dict(user):
     user_dict = {}
     for index, parameter in enumerate(user_parameters.keys()):
-        print(parameter, ' ', str(user[index]))
         user_dict[parameter] = user[index]
 
     return user_dict

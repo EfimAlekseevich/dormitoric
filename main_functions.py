@@ -92,10 +92,11 @@ def update_user_role(connection, user_id):
     db_user = get_user_dict(db_queries.get_user(connection, user_id))
     points = count_points(db_user)
     print(points)
-    if points > 12:
-        db_queries.update_parameter(connection, user_id, 'role', 'user2')
-    elif points > 15:
+    if points > 15:
         db_queries.update_parameter(connection, user_id, 'role', 'user1')
+    elif points > 12:
+        db_queries.update_parameter(connection, user_id, 'role', 'user2')
+
 
 
 def count_points(db_user):
