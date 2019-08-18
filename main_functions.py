@@ -49,7 +49,7 @@ def process_message(bot, connection, message, markups, settings):
                 db_queries.update_parameter(connection, user_id, parameter, user_text)
                 answer_text = f'Ваш {db_user["last_message"].split(":")[0].lower()} был успешно сохранён.'
                 answer_markup = get_user_markup(get_user_dict(db_queries.get_user(connection, user_id)))
-
+                update_user_role(connection, user_id)
             else:
                 answer_text = 'Параметр введён некорректно'
 
