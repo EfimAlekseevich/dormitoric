@@ -15,3 +15,20 @@
  crimes       | integer                        |           |          | 0
  sub          | boolean                        |           |          | true
  last_message | text                           |           |          |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

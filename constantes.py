@@ -2,8 +2,8 @@ from telebot.types import ReplyKeyboardMarkup
 from os import environ
 
 bot_token = '634274078:AAFBGKdcQpuEOId-rcSSpctNio68GpBJs_8'
-database_url = 'postgres://sraaakuemkheol:fc3d758ed310fb355caa9d9f15ca57a96d52cbe437ef67f7ee64f7c5da00b9d5@ec2-184-' \
-               '72-237-95.compute-1.amazonaws.com:5432/daacm3qebm4f37'
+database_url = 'postgres://nbebifkcpggfyz:c12977b23c5ee5463b82dd597e96b9ce8703f6926a4cdef0eb016d7cb0ae6c80@ec2-184-72-237-95.compute-1.amazonaws.com:5432/di1ujmk8trhtt'
+
 
 sql_queries = {
     "get_user": "SELECT * FROM users WHERE id = %(user_id)s",
