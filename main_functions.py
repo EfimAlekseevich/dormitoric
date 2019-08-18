@@ -49,6 +49,7 @@ def process_message(bot, connection, message, markups, settings):
                 db_queries.update_parameter(connection, user_id, parameter, user_text)
                 answer_text = f'Ваш {db_user["last_message"].split(":")[0].lower()} был успешно сохранён.'
                 answer_markup = get_user_markup(get_user_dict(db_queries.get_user(connection, user_id)))
+
             else:
                 answer_text = 'Параметр введён некорректно'
 
@@ -85,6 +86,28 @@ def verify_user(connection, user_id, message):
         user = db_queries.get_user(connection, user_id)
 
     return get_user_dict(user)
+
+
+def update_user_role(connection, user_id):
+    db_user = get_user_dict(db_queries.get_user(connection, user_id))
+    points = count_points(db_user)
+    if points > 12:
+        db_queries.update_parameter(connection, user_id, 'role', 'user2')
+    elif points > 15:
+        db_queries.update_parameter(connection, user_id, 'role', 'user2')
+
+
+def count_points(db_user):
+    points = 0
+    for parameter, value in db_user.items():
+        if value:
+            points += 1
+        if parameter == 'crimes':
+            if value:
+                points -= 1
+            points -= value // 4
+
+    return points
 
 
 def get_user_markup(db_user):
