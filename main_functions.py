@@ -22,7 +22,7 @@ def process_message(bot, connection, message, markups, settings):
         answer_text = const.commands[user_text[1:]]
         answer_markup = markups['Назад']
     elif user_text in const.usually_answers.keys():
-        answer_text = const.usually_answers[user_text]
+        answer_text = get_answer(user_text)
 
     if user_text in markups.keys():
         answer_markup = markups[user_text]
@@ -56,6 +56,16 @@ def process_message(bot, connection, message, markups, settings):
 
     bot.send_message(user_id, answer_text, reply_markup=answer_markup, parse_mode=settings.parse_mode)
     print(get_log_text(message, datetime.now(), answer_text, crimes, settings))
+
+
+def get_answer(user_text):
+    answer = const.usually_answers[user_text]
+    try:
+        with open('answers/' + answer) as f:
+            answer = f.read()
+    except:
+        pass
+    return answer
 
 
 def get_crimes(text):
@@ -128,7 +138,7 @@ def try_to_int(string):
 
 
 def list_merge(lst_lst):
-    all=[]
+    full_list = list()
     for lst in lst_lst:
-      all.extend(lst)
-    return all
+      full_list.extend(lst)
+    return full_list
