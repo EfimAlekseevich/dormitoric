@@ -16,7 +16,10 @@ sql_queries = {
                         "SET parameter = %(value)s "
                         "WHERE id = %(user_id)s",
     "update_user": "UPDATE users "
-                   "SET updated = %(updated)s, num_messages = %(num_messages)s, last_message = %(last_message)s "
+                   "SET updated = %(updated)s,"
+                   " num_messages = %(num_messages)s,"
+                   " last_message = %(last_message)s,"
+                   " crimes = %(crimes)s "
                    "WHERE id = %(user_id)s"
 }
 

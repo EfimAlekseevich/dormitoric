@@ -52,9 +52,13 @@ def update_parameter(connection, user_id, parameter, value):
     cursor.close()
 
 
-def update_user(connection, user_id, last_message, num_messages):
+def update_user(connection, user_id, last_message, num_messages, crimes):
     sql = sql_queries['update_user']
-    data = {'user_id': user_id, 'updated': datetime.now(), 'last_message': last_message, 'num_messages': num_messages}
+    data = {'user_id': user_id,
+            'updated': datetime.now(),
+            'last_message': last_message,
+            'num_messages': num_messages,
+            'crimes': crimes}
     cursor = execute_query(connection, sql, data)
     connection.commit()
     cursor.close()

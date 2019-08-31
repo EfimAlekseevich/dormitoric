@@ -21,18 +21,19 @@ def get_role_stat(connection, role):
                 f'Парни: {statistics["male"]}\n' \
                 f'Девушки: {statistics["female"]}\n' \
                 f'Количество оскорблений: {statistics["crimes"]}\n' \
-                f'Средний курс: {statistics["sum_course"]//statistics["num_course"]}\n' \
-                f'Средний этаж: {statistics["sum_floor"]//statistics["num_floor"]}'
+                f'Средний курс: {round(statistics["sum_course"]/statistics["num_course"], 2)}\n' \
+                f'Средний этаж: {round(statistics["sum_floor"]/statistics["num_floor"], 2)}'
         else:
-            mid_age = (date.today().year * statistics['num_year'] - statistics['sum_year']) // statistics['num_year']
+            mid_age = round((date.today().year * statistics['num_year'] - statistics['sum_year']) /
+                            statistics['num_year'], 2)
             answer = f'Количество пользователей: {statistics["users"]}\n' \
                 f'Количество подписанных: {statistics["sub"]}\n' \
                 f'Парни: {statistics["male"]}\n' \
                 f'Девушки: {statistics["female"]}\n' \
                 f'Количество оскорблений: {statistics["crimes"]}\n' \
                 f'Количество сообщений: {statistics["num_messages"]}\n' \
-                f'Средний курс: {statistics["sum_course"]//statistics["num_course"]}\n' \
-                f'Средний этаж: {statistics["sum_floor"]//statistics["num_floor"]}\n' \
+                f'Средний курс: {round(statistics["sum_course"]/statistics["num_course"], 2)}\n' \
+                f'Средний этаж: {round(statistics["sum_floor"]/statistics["num_floor"], 2)}\n' \
                 f'Средний возраст: {mid_age}'
     return answer
 

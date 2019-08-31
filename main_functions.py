@@ -53,7 +53,7 @@ def process_message(bot, connection, message, markups, settings):
             else:
                 answer_text = 'Параметр введён некорректно'
 
-        db_queries.update_user(connection, user_id, user_text, db_user['num_messages']+1)
+        db_queries.update_user(connection, user_id, user_text, db_user['num_messages']+1, db_user['crimes']+crimes)
 
     bot.send_message(user_id, answer_text, reply_markup=answer_markup, parse_mode=settings.parse_mode)
     print(get_log_text(message, datetime.now(), answer_text, crimes, settings))
@@ -91,12 +91,11 @@ def verify_user(connection, user_id, message):
 def update_user_role(connection, user_id):
     db_user = get_user_dict(db_queries.get_user(connection, user_id))
     points = count_points(db_user)
-    print(points)
-    if points > 15:
-        db_queries.update_parameter(connection, user_id, 'role', 'user1')
-    elif points > 12:
-        db_queries.update_parameter(connection, user_id, 'role', 'user2')
-
+    if 'user' in db_user['role']:
+        if points > 15:
+            db_queries.update_parameter(connection, user_id, 'role', 'user1')
+        elif points > 12:
+            db_queries.update_parameter(connection, user_id, 'role', 'user2')
 
 
 def count_points(db_user):
