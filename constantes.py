@@ -1,9 +1,9 @@
 from telebot.types import ReplyKeyboardMarkup
-from os import environ
+from os import environ as env
 
-bot_token = '634274078:AAFBGKdcQpuEOId-rcSSpctNio68GpBJs_8'
-database_url = 'postgres://nbebifkcpggfyz:c12977b23c5ee5463b82dd597e96b9ce8703f6926a4cdef0eb016d7cb0ae6c80@ec2-184-72-237-95.compute-1.amazonaws.com:5432/di1ujmk8trhtt'
 
+bot_token = env['BOT_TOKEN']
+database_url = env['DATABASE_URL']
 
 sql_queries = {
     "get_user": "SELECT * FROM users WHERE id = %(user_id)s",
